@@ -1,0 +1,53 @@
+﻿@page
+@model WebUI.Pages.SampleEntity.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<div class="container-fluid">
+    <div class="text-right mb-2">
+        <a asp-page="Create" class="btn btn-success">Add New Sample</a>
+    </div>
+    <div class="card card-default card-demo">
+        <div class="card-body">
+            <table class="table table-striped my-4 w-100" id="gpdatatable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Sample Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.SampleEntityList != null)
+                    {
+                        @foreach (var sampleEntity in Model.SampleEntityList.SampleEntities)
+                        {
+                            <tr role="row">
+                                <td>@sampleEntity.Id</td>
+                                <td>@sampleEntity.SampleName</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var message = "@Html.Raw(ViewData["Message"])";
+            var errorMessage = "@Html.Raw(ViewData["ErrorMessage"])";
+
+            if (message) {
+                alert(message);
+            }
+
+            if (errorMessage) {
+                alert(errorMessage);
+            }
+        });
+    </script>
+}

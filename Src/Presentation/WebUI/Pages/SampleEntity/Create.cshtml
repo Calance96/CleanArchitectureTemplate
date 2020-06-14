@@ -1,0 +1,31 @@
+﻿@page
+@model WebUI.Pages.SampleEntity.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<div class="container-fluid">
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="NewSampleEntity.SampleName"></label>
+            <input type="text" class="form-control" asp-for="NewSampleEntity.SampleName" />
+            <span class="text-danger" asp-validation-for="NewSampleEntity.SampleName"></span>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+        <a asp-page="Index" class="btn btn-danger">Back</a>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var errorMessage = "@Html.Raw(ViewData["ErrorMessage"])";
+
+            if (errorMessage) {
+                alert(errorMessage);
+            }
+        });
+    </script>
+}
